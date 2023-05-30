@@ -1,0 +1,41 @@
+.header {
+  background-color: #003580;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.headerContainer {
+  width: 100%;
+  max-width: 1020px;
+  margin: 20px 0px 100px 0px;
+}
+
+.headerList {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.headerListItem {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.headerListItem.active {
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.headerDesc {
+  margin: 20px 0px;
+}
+
+.headerBtn {
+  background-color: #0071c2;
+  border: none;
+  padding: 10px;
+  color: #fff;
+}
