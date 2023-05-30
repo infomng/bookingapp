@@ -5,6 +5,8 @@ import {
   faTaxi,
   faPlane,
   faCar,
+  faCalendarDays,
+  faPerson,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Hearder = () => {
@@ -39,6 +41,28 @@ const Hearder = () => {
           with a free Gdbooking account
         </p>
         <button className="headerBtn">Sign in / Register</button>
+
+        <div className="headerSearch">
+          <div className="headerSearchItems">
+            <FontAwesomeIcon icon={faBed} className="headerIcon" />
+            <input
+              type="text"
+              placeholder="Where are you going"
+              className="headerSearchInput"
+            />
+          </div>
+          <div className="headerSearchItems">
+            <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
+            <span className="headerSearchText">date to date</span>
+          </div>
+          <div className="headerSearchItems">
+            <FontAwesomeIcon icon={faPerson} className="headerIcon" />
+            <span className="headerSearchText">2 adults 2 children</span>
+          </div>
+          <div className="headerSearchItems">
+            <button className="headerBtn">Search</button>
+          </div>
+        </div>
       </div>
     </div>
   );
