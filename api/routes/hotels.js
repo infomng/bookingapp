@@ -38,8 +38,11 @@ router.delete("/:id", async (req,res) => {
     };
 
 });
+
+
+
 //GET 
-router.findOne("/:id", async (req,res) => {
+router.get("/:id", async (req,res) => {
     try{
         const hotel = await Hotel.findById(req.params.id);
         res.status(200).json(hotel);
@@ -49,7 +52,7 @@ router.findOne("/:id", async (req,res) => {
     }
 });
 //GET ALL
-router.find("/", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const hotels = await Hotel.find(req.params.id);
     res.status(200).json(hotels);
