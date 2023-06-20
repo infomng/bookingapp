@@ -1,7 +1,5 @@
 
-const { Schema } = mongoose;
-
-
+// const { Schema } = mongoose;
 import mongoose from "mongoose";
 const HotelSchema = new mongoose.Schema({
   name: {
