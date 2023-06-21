@@ -16,3 +16,5 @@
   - npm i dotenv
 
   -npm i mongoose <!-- to use mongoose to connect to mongodb-->
+
+  - openssl rand -base64 32
