@@ -2,6 +2,8 @@ import Room from "../models/Room.js";
 import Hotel from "../models/Hotel.js";
 import { createError } from "../utils/error.js";
 
+
+//CREATE
 export const createRoom = async (req, res, next) => {
   const hotelId = req.params.hotelid;
   const newRoom = new Room(req.body);
@@ -21,6 +23,8 @@ export const createRoom = async (req, res, next) => {
   }
 };
 
+
+//UPDATE
 export const updateRoom = async (req, res, next) => {
   try {
     const updatedRoom = await Room.findByIdAndUpdate(
@@ -33,6 +37,9 @@ export const updateRoom = async (req, res, next) => {
     next(err);
   }
 };
+
+
+//UPDATE AVAILABILITY
 export const updateRoomAvailability = async (req, res, next) => {
   try {
     await Room.updateOne(
@@ -48,6 +55,8 @@ export const updateRoomAvailability = async (req, res, next) => {
     next(err);
   }
 };
+
+//DELETE
 export const deleteRoom = async (req, res, next) => {
   const hotelId = req.params.hotelid;
   try {
@@ -64,6 +73,9 @@ export const deleteRoom = async (req, res, next) => {
     next(err);
   }
 };
+
+
+//GET BY ID
 export const getRoom = async (req, res, next) => {
   try {
     const room = await Room.findById(req.params.id);
@@ -72,6 +84,10 @@ export const getRoom = async (req, res, next) => {
     next(err);
   }
 };
+
+
+
+// GET ALL
 export const getRooms = async (req, res, next) => {
   try {
     const rooms = await Room.find();
