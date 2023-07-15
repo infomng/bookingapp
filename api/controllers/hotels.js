@@ -40,17 +40,45 @@ export const getHotel = async (req, res, next) => {
   }
 };
 export const    getHotels = async (req, res, next) => {
-  const { min, max, ...others } = req.query;
+  const { min, max,limitValue, ...others } = req.query;
   try {
+
+    let limit = parseInt(limitValue); // Convertir la valeur en entier
+
+    if (isNaN(limit)) {
+      limit = 0; // Si la valeur n'est pas un nombre valide, définir la limite à 0 (aucune limite)
+    }
     const hotels = await Hotel.find({
       ...others,
-      cheapestPrice: { $gt: min | 1, $lt: max || 999 },
-    }).limit(req.query.limit);
+      cheapestPrice: { $gt: min-1 || 1, $lt: max|| 999 },
+    }).limit(limit);
     res.status(200).json(hotels);
+
   } catch (err) {
     next(err);
   }
 };
+
+// export const getHotels = async (req, res, next) => {
+//   const { min, max, limitValue, ...others } = req.query;
+//   try {
+//     let limit = parseInt(limitValue); // Convertir la valeur en entier
+
+//     if (isNaN(limit)) {
+//       limit = 0; // Si la valeur n'est pas un nombre valide, définir la limite à 0 (aucune limite)
+//     }
+
+//     const hotels = await Hotel.find({
+//       ...others,
+//       cheapestPrice: { $gt: min | 1, $lt: max || 999 },
+//     }).limit(limit);
+
+//     res.status(200).json(hotels);
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+
 export const countByCity = async (req, res, next) => {
   const cities = req.query.cities.split(",");
   try {
