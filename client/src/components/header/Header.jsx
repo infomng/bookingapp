@@ -17,9 +17,25 @@ import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 
+
+{/*En gros ici on utilise les données entrées dans la barre de recherche par l'utilisateur pour retour l'ensemble d'hotel
+correspondant à la requête de l'utilisateur notemment destination, dates et parameters d'options 
+*/}
+
+
+
+
 const Header = ({ type }) => {
-  const [destination, setDestination] = useState("");
+
+  //destination
+  const [destination, setDestination] = useState(""); 
+
+
+// ouvrir/fermer date
   const [openDate, setOpenDate] = useState(false);
+
+
+//dates
   const [dates, setDates] = useState([
     {
       startDate: new Date(),
@@ -27,7 +43,12 @@ const Header = ({ type }) => {
       key: "selection",
     },
   ]);
-  const [openOptions, setOpenOptions] = useState(false);
+
+
+  const [openOptions, setOpenOptions] = useState(false); {/* ouvrir ou fermer les options*/}
+
+
+  // options
   const [options, setOptions] = useState({
     adult: 1,
     children: 0,
@@ -37,6 +58,8 @@ const Header = ({ type }) => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
+
+  // handle option: take all the previous states and 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
       return {
@@ -48,10 +71,13 @@ const Header = ({ type }) => {
 
    const { dispatch } = useContext(SearchContext);
 
+
+   // handleSerach pour recuperer les données entrées par l'utilisateur
   const handleSearch = () => {
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
     navigate("/hotels", { state: { destination, dates, options } });
   };
+
 
   return (
     <div className="header">
@@ -91,8 +117,14 @@ const Header = ({ type }) => {
               Get rewarded for your travels – unlock instant savings of 10% or
               more with a free Lamabooking account
             </p>
+
+            {/* if there is an user display the button Sign in/Register */}
             {!user && <button className="headerBtn">Sign in / Register</button>}
+
+            {/* Search bar*/}
             <div className="headerSearch">
+
+              {/*Input for destination*/}
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
                 <input
@@ -102,6 +134,8 @@ const Header = ({ type }) => {
                   onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
+
+              {/*Set date*/}
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
                 <span
@@ -122,6 +156,8 @@ const Header = ({ type }) => {
                   />
                 )}
               </div>
+
+              {/*Set Options*/}
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faPerson} className="headerIcon" />
                 <span

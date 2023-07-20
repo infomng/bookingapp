@@ -8,6 +8,11 @@ import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
 
+{/*grossomodo ici on affiche les hotels selon la localisation entrée par le user */}
+
+
+
+
 const List = () => {
   const location = useLocation();
   const [destination, setDestination] = useState(location.state.destination);
@@ -18,15 +23,17 @@ const List = () => {
   const [max, setMax] = useState(undefined);
 
   const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
+    `hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
   );
-
+ 
   const handleClick = () => {
     reFetch();
   };
+  console.log(dates[0].endDate);
 
   return (
-    <div>
+    <div> 
+    
       <Navbar />
       <Header type="list" />
       <div className="listContainer">
@@ -35,7 +42,7 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input placeholder={destination} type="text" />
+              <input placeholder={destination} onChange={(e)=>setDestination(e.target.value)} type="text" />
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>

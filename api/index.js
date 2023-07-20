@@ -29,6 +29,7 @@ try {
 // what appen in case of deconnection after the first one 
 mongoose.connection.on("disconnected", () => {
   console.log("mongodb disconnected");
+  connect();
 });
 
 

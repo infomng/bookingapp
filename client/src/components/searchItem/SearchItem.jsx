@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./SearchItem.css";
-import useFetch from "../../hooks/useFetch";
+
 
 const SearchItem = ({ item }) => {
   return (
